@@ -1,0 +1,165 @@
+/* ── Шапка ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+/* ── Логотип ── */
+.logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  /* Мобильный: пропорционально уменьшаем */
+  width: 120px;
+  height: auto;
+}
+
+/* ── Десктопная навигация (скрыта на мобильном) ── */
+.nav {
+  display: none;
+  /* Отступ от логотипа */
+  margin-left: 94px;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 48px;                /* Figma: разряженные ссылки */
+}
+
+.navLink {
+  font-size: 1.0625rem;     /* ~17px ≈ Figma 19px с учётом масштаба */
+  font-weight: 400;
+  color: #d9d9d9;           /* Figma: #D9D9D9 */
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Figma text-shadow */
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: var(--color-green-light);
+}
+
+/* ── Гамбургер ── */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: auto; /* прижимаем вправо */
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base);
+}
+
+/* X-анимация при открытии */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Мобильное меню ── */
+.mobileMenu {
+  position: fixed;
+  inset: 64px 0 0 0;
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(100%);
+  transition: transform var(--transition-base);
+  z-index: 99;
+}
+
+.mobileMenuOpen {
+  transform: translateX(0);
+}
+
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.mobileLink {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.mobileLink:hover {
+  color: var(--color-green-light);
+}
+
+/* ── Планшет и выше ── */
+@media (min-width: 768px) {
+  .nav {
+    display: block;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+
+  .logoImg {
+    width: 155px; /* промежуточный размер для планшета */
+  }
+}
+
+/* ── Десктоп ── */
+@media (min-width: 1024px) {
+  .inner {
+    height: 72px;
+  }
+
+  .logoImg {
+    width: 195px;  /* Figma: 195×41px */
+    height: 41px;
+  }
+
+  .navLink {
+    font-size: 1.125rem; /* ≈ Figma 19.174px */
+  }
+
+  .navList {
+    gap: 94px;
+  }
+}

@@ -1,0 +1,88 @@
+:root {
+  /* ── Цвета ── */
+  --color-bg:          #1c1d1e; /* Figma: Frame background */
+  --color-bg-card:     #161b22;
+  --color-bg-light:    #f8f9fa;
+  --color-green:       #3d7a3d;
+  --color-green-light: #4CAF50;
+  --color-text:        #ffffff;
+  --color-text-muted:  rgba(255, 255, 255, 0.65);
+
+  /* ── Типографика ── */
+  --font-main: 'Montserrat', sans-serif;
+
+  /* ── Лейаут ── */
+  --container-max: 1280px;
+  --container-pad: 20px;
+
+  /* ── Скругления ── */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   24px;
+  --radius-full: 9999px;
+
+  /* ── Отступы (8pt grid) ── */
+  --space-1:  8px;
+  --space-2:  16px;
+  --space-3:  24px;
+  --space-4:  32px;
+  --space-6:  48px;
+  --space-8:  64px;
+  --space-12: 96px;
+
+  /* ── Переходы ── */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ── Утилита: контейнер ── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
