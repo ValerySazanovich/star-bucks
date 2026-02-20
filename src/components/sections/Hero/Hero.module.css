@@ -1,0 +1,273 @@
+/* ══════════════════════════════
+    СЕКЦИЯ
+══════════════════════════════ */
+.hero {
+  position: relative;
+  padding-top: 18px;
+  padding-bottom: 64px;
+  overflow: visible;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 48px;
+}
+
+/* ══════════════════════════════
+    ЛЕВЫЙ БЛОК
+══════════════════════════════ */
+.left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 1;
+  width: 100%;
+}
+
+.left::before {
+  content: "";
+  position: absolute;
+  inset: -300px; /* выходит на 100px со всех сторон */
+  background: radial-gradient(
+    ellipse 36% 26% at 36% 37%,
+    rgba(53, 198, 107, 0.15) 0%,
+    transparent 82%
+  );
+  pointer-events: none;
+}
+
+/* ── Заголовок ── */
+.heading {
+  /* Figma desktop: 80px / 800 / ls -2.4px / lh 109.471% */
+  font-size: clamp(36px, 7vw, 80px);
+  font-weight: 800;
+  line-height: 109.471%;
+  letter-spacing: clamp(-0.72px, -0.03em, -2.4px);
+  color: var(--color-text);
+}
+
+/* «StarBucks» — градиентный текст */
+.brand {
+  background: linear-gradient(263deg, #237249 3.14%, #35c66b 87.2%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Подзаголовок ── */
+.subtitle {
+  /* Figma: 20px / 400 / #D9D9D9 / lh 163.471% / ls -0.4px */
+  font-size: clamp(14px, 2vw, 20px);
+  font-weight: 400;
+  color: #d9d9d9;
+  line-height: 163.471%;
+  letter-spacing: -0.4px;
+  max-width: 570px;
+}
+
+/* ── Кнопки ── */
+.buttons {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  /* Figma: 333×75px / radius 82.834px / gradient / 24px */
+  height: clamp(52px, 6vw, 75px);
+  padding: 0 clamp(24px, 4vw, 48px);
+  border-radius: 82.834px;
+  background: linear-gradient(265deg, #237249 6.79%, #35c66b 97.2%);
+  font-family: var(--font-main);
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.48px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    filter 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(53, 198, 107, 0.65);
+}
+
+.btnSecondary {
+  /* Figma: 168×75px / radius 82.834px / border #DADADA / bg #121517 */
+  height: clamp(52px, 6vw, 75px);
+  padding: 0 clamp(24px, 3vw, 40px);
+  border-radius: 82.834px;
+  background: #121517;
+  border: 1.023px solid #dadada;
+  font-family: var(--font-main);
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 400;
+  color: #d9d9d9;
+  letter-spacing: -0.72px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.btnSecondary:hover {
+  border-color: #42e57e;
+  color: #42e57e;
+  background: rgba(53, 198, 107, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(53, 198, 107, 0.30);
+}
+
+/* ── Статистика ── */
+.stats {
+  display: flex;
+  /* justify-content: center; */
+  align-items: flex-start;
+  gap: clamp(24px, 4vw, 56px);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statValue {
+  /* Figma: 62px / 400 / lh 109.471% / ls -1.86px */
+  font-size: clamp(32px, 5vw, 62px);
+  font-weight: 400;
+  line-height: 109.471%;
+  letter-spacing: clamp(-0.96px, -0.03em, -1.86px);
+  color: var(--color-text);
+}
+
+.statPlus {
+  color: var(--color-green-light);
+}
+
+.statLabel {
+  /* Figma: 20px / 400 / #D9D9D9 / lh 144.471% */
+  font-size: clamp(12px, 1.5vw, 20px);
+  font-weight: 400;
+  color: #d9d9d9;
+  line-height: 144.471%;
+  white-space: pre-line;
+}
+
+/* ══════════════════════════════
+    ПРАВЫЙ БЛОК
+══════════════════════════════ */
+.right {
+  display: flex;
+  position: relative;
+  width: clamp(260px, 45vw, 472px);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* Обёртка чашки — содержит ::after с декоративными волнами */
+.cupWrapper {
+  position: relative;
+}
+
+/* Чашка кофе */
+.cup {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+}
+
+.cupWrapper::before {
+  content: "";
+  position: absolute;
+  /* растягиваем псевдоэлемент больше картинки */
+  inset: -80% -60%;
+  /* или так: top: -80%; left: -60%; right: -60%; bottom: -80%; */
+
+  background:  /* Серый отсвет над крышкой чашки — верхний правый угол */ radial-gradient(
+    ellipse 41% 20% at 43% 42%,
+    rgba(200, 200, 200, 0.13) 11%,
+    transparent 57%
+  ),
+  /* Зелёный гланс вокруг чашки — правый центр */
+    radial-gradient(
+      ellipse 98% 44% at 55% 64%,
+      rgba(35, 114, 73, 0.5) -5%,
+      transparent 28%
+    );
+
+  pointer-events: none;
+  z-index: -1; /* под картинкой */
+}
+
+/* Декоративные волны через псевдоэлемент */
+.cupWrapper::after {
+  content: "";
+  position: absolute;
+  right: -40%;
+  top: 86%;
+  transform: translateY(-50%);
+  width: 862px;
+  height: 100%;
+  background-image: url("../../../assets/images/hero-vector.png");
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: contain;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ══════════════════════════════
+    АДАПТИВ
+══════════════════════════════ */
+
+@media (min-width: 768px) {
+  .hero {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+
+  .left {
+    gap: 36px;
+  }
+}
+
+/* -------------------------------- */
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+
+  .inner {
+    flex-direction: row; /* бок о бок */
+    align-items: center;
+    gap: 140px;
+  }
+
+  .left {
+    max-width: 574px; /* Figma: ширина левого блока */
+    gap: 40px;
+  }
+}
