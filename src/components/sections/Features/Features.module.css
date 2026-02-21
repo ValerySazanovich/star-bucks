@@ -1,5 +1,6 @@
 .section {
   padding-bottom: 48px;
+  overflow-x: clip;
 }
 
 /* ── Внешняя обёртка (badge + card) ── */
@@ -25,7 +26,7 @@
 /* ── Белая карточка ── */
 .card {
   position: relative;
-  width: 350px;
+  width: 80%;
   background: linear-gradient(
     265deg,
     #fff 4.95%,

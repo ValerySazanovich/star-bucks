@@ -1,0 +1,390 @@
+/* ══════════════════════════════
+    СЕКЦИЯ
+══════════════════════════════ */
+.section {
+  padding-bottom: 64px;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Декоративные волны */
+.vector {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: -20px;
+  width: clamp(380px, 65%, 600px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+  transform: rotate(-20deg);
+}
+
+/* Правая колонка (mobile — wrapper без стилей) */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+
+
+/* ══════════════════════════════
+    ФОТО КАФЕ
+══════════════════════════════ */
+.photoBlock {
+  position: relative;
+  height: 280px;
+}
+
+.photoBlock::after {
+  content: "";
+  position: absolute;
+  inset: -200px -280px;
+  background: radial-gradient(
+    ellipse 23% 20% at 36% 69%,
+    rgba(53, 198, 107, 0.15) 36%,
+    transparent 133%
+  );
+  pointer-events: none;
+}
+
+/*
+  Зелёная тень — та же форма, сдвинута:
+  - влево на 16px (фото стартует с left:16px)
+  - вниз на 13px
+  clip-path воспроизводит Figma-полигон:
+    M0 12.6 H113.5 L163.2 72.3 V252.7 H0 Z
+  Пересчитано в % от 163×240px:
+    0% 5.3%  →  69.6% 5.3%  →  100% 30.1%  →  100% 100%  →  0% 100%
+*/
+.cafeShadow {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 180px;
+  height: 250px;
+  background: #237249;
+  clip-path: polygon(0% 5.3%, 69.6% 5.3%, 100% 30.1%, 100% 100%, 0% 100%);
+}
+
+/*
+  Фото кафе с диагональным срезом сверху-справа.
+  Figma-полигон: M15.8 0 H129.3 L179 59.7 V240 H15.8 Z
+  В координатах элемента 163×240px:
+    0% 0%  →  69.6% 0%  →  100% 24.9%  →  100% 100%  →  0% 100%
+*/
+.cafeImg {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  width: 200px;
+  height: 290px;
+  object-fit: cover;
+  clip-path: polygon(0% 0%, 69.6% 0%, 100% 24.9%, 100% 100%, 0% 100%);
+  z-index: 1;
+}
+
+/* WE HAVE бейдж справа от фото */
+.badge {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════
+    ТЕКСТ
+══════════════════════════════ */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.textBlock::after {
+  content: "";
+  position: absolute;
+  inset: -200px -280px;
+  background: radial-gradient(
+    ellipse 20% 15% at 60% 34%,
+    rgba(53, 198, 107, 0.15) 6%,
+    transparent 133%
+  );
+  pointer-events: none;
+}
+
+.heading {
+  /* Figma: 48px / 800 / lh 109.471% / ls -1.44px */
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 109.471%;
+  letter-spacing: -1.44px;
+  color: var(--color-text);
+}
+
+/* «delicious» — градиентный текст */
+.accent {
+  background: linear-gradient(267deg, #237249 3.05%, #35c66b 75.72%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.desc {
+  /* Figma: 14px / 400 / #D9D9D9 / lh 163.471% / ls -0.28px */
+  font-size: 14px;
+  font-weight: 400;
+  color: #d9d9d9;
+  line-height: 163.471%;
+  letter-spacing: -0.28px;
+}
+
+/* ══════════════════════════════
+    COOKING PROCESS
+══════════════════════════════ */
+.cookingBlock {
+  position: relative;
+  width: 256px;
+  height: 163px;
+  align-self: flex-start;
+}
+
+/*
+  Фото с обрезанным верхним правым углом.
+  Figma-полигон: M219.4 0 H0 V163 H255.6 V40.3 L219.4 0
+  В % от 255.6×163px:
+    85.8% 0%  →  0% 0%  →  0% 100%  →  100% 100%  →  100% 24.7%
+*/
+.cookingImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(85.8% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 24.7%);
+}
+
+/* Зелёная кнопка поверх фото */
+.cookingBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  height: 44px;
+  border-radius: 22px;
+  background: linear-gradient(265deg, #237249 6.79%, #35c66b 97.2%);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  transition: filter 150ms ease, box-shadow 150ms ease;
+}
+
+.cookingBtn:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 6px 24px rgba(53, 198, 107, 0.5);
+}
+
+/* Play-треугольник */
+.playIcon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 9px solid #fff;
+}
+
+/* ══════════════════════════════
+    ПЛАНШЕТ — 768px
+══════════════════════════════ */
+@media (min-width: 768px) {
+  .section {
+    padding-bottom: 80px;
+  }
+
+  .photoBlock {
+    height: 360px;
+  }
+
+  .cafeShadow {
+    top: 18px;
+    width: 230px;
+    height: 342px;
+  }
+
+  .cafeImg {
+    left: 22px;
+    width: 230px;
+    height: 342px;
+  }
+
+  .badge {
+    width: 120px;
+    top: 80px;
+  }
+
+  .heading {
+    font-size: clamp(48px, 7vw, 64px);
+  }
+
+  .desc {
+    font-size: 16px;
+    max-width: 480px;
+  }
+
+  .cookingBlock {
+    width: 340px;
+    height: 216px;
+  }
+
+  .cookingBtn {
+    height: 52px;
+    font-size: 16px;
+    padding: 0 28px;
+    border-radius: 26px;
+  }
+}
+
+/* ══════════════════════════════
+    ДЕСКТОП — 1024px
+    layout: [фото] | [текст + cooking]
+══════════════════════════════ */
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 0;
+    padding-bottom: 80px;
+    overflow: visible;
+  }
+
+  /* Строка: фото слева, правая колонка справа */
+  .inner {
+    flex-direction: row;
+    align-items: flex-start;
+    /* gap = 289px при 1294px фрейме → 22.3vw, clamped */
+    gap: clamp(80px, 16vw, 289px);
+  }
+
+  /* ── Левая колонка: фото ── */
+  /*
+    Figma: photoBlock 548×755px (42.3% × 58.3% фрейма).
+    При viewport 1294px → 548px; при 1024px → ~434px.
+  */
+  .photoBlock {
+    flex: 0 0 clamp(400px, 44%, 548px);
+    height: clamp(600px, 58vw, 755px);
+  }
+
+  /*
+    Тень: left=0, top=71/755=9.4%, width=465/548=84.9%, height=684/755=90.6%
+  */
+  .cafeShadow {
+    left: 5.0%;
+    top: 7.4%;
+    width: 84.9%;
+    height: 90.6%;
+  }
+
+  /*
+    Фото: left=45/548=8.2%, top=35/755=4.6%, width=84.9%, height=90.6%
+  */
+  .cafeImg {
+    left: 8.2%;
+    top: 4.6%;
+    width: 84.9%;
+    height: 100%;
+  }
+
+  /* Бейдж: ~185px, center y≈115/755=15%, вылезает вправо в gap */
+  .badge {
+    width: clamp(140px, 14vw, 185px);
+    top: 5%;
+    right:0;
+    z-index: 3;
+  }
+
+  /* ── Декоративные волны ── */
+  .vector {
+    display: block;
+    position: absolute;
+    right: -1%;
+    top: 30%;
+    width: clamp(300px, 55vw, 900px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+    transform: rotate(0deg);
+  }
+
+  /* ── Правая колонка ── */
+  /* Figma: right content top=65px */
+  .rightCol {
+    flex: 1;
+    padding-top: clamp(40px, 5vw, 65px);
+    gap: clamp(40px, 4.5vw, 63px);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Figma: 80px / 800 / ls -2.4px */
+  .heading {
+    font-size: 80px;
+    letter-spacing: -2.4px;
+  }
+
+  /* Figma: 20px / 400 / width 457px */
+  .desc {
+    font-size: 20px;
+    max-width: 457px;
+    letter-spacing: -0.4px;
+  }
+
+  /* Figma: 447×275px */
+  .cookingBlock {
+    width: clamp(300px, 100%, 447px);
+    height: auto;
+    aspect-ratio: 447 / 275;
+    align-self: auto;
+  }
+
+  /*
+    На десктопе обрезка СНИЗУ-СПРАВА (не сверху-справа как на мобиле).
+    Figma: M383.736 275H0V0H447V207L383.736 275Z
+    → polygon: 0%0% → 100%0% → 100%75.3% → 85.8%100% → 0%100%
+    (85.8% = 383.736/447, 75.3% = 207/275)
+  */
+  .cookingImg {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75.3%, 85.8% 100%, 0% 100%);
+  }
+
+  /* Figma: rect 326×75px, rx=37.5, font 24px/600 */
+  .cookingBtn {
+    height: 75px;
+    font-size: 24px;
+    padding: 0 48px;
+    border-radius: 37.5px;
+    gap: 20px;
+  }
+
+  .playIcon {
+    border-top-width: 8px;
+    border-bottom-width: 8px;
+    border-left-width: 14px;
+  }
+}
