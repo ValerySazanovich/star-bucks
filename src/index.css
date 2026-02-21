@@ -12,8 +12,8 @@
   --font-main: 'Montserrat', sans-serif;
 
   /* ── Лейаут ── */
-  --container-max: 1280px;
-  --container-pad: 20px;
+  --container-max: 1310px;
+  --container-pad: 35px;
 
   /* ── Скругления ── */
   --radius-sm:   6px;
