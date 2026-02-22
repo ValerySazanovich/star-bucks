@@ -1,0 +1,309 @@
+/* ══════════════════════════════
+    СЕКЦИЯ
+══════════════════════════════ */
+.section {
+  padding-top: 3.5rem;
+  padding-bottom: 4rem;
+  overflow-x: clip;
+}
+
+/* ══════════════════════════════
+    ШАПКА
+══════════════════════════════ */
+.header {
+  margin-bottom: 2rem;
+}
+
+.heading {
+  font-size: clamp(55px, 5.3vw, 80px);
+  font-weight: 800;
+  line-height: 109.471%;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+.accent {
+  background: linear-gradient(263deg, #237249 3.14%, #35c66b 87.2%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  margin-top: 0.75rem;
+  font-size: clamp(14px, 1.32vw, 20px);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 163.471%;
+  letter-spacing: -0.0166rem;
+  max-width: 20rem;
+}
+
+/* ══════════════════════════════
+    КАРУСЕЛЬ
+══════════════════════════════ */
+.carouselOuter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  --gap: 0.875rem;
+  --card-w: 12.5rem; /* 200px */
+  --n-cards: 1;
+}
+
+.trackClip {
+  overflow: hidden;
+  /* ровно N карточек — следующие не просвечивают */
+  width: calc(var(--n-cards) * (var(--card-w) + var(--gap)) - var(--gap));
+}
+
+.track {
+  display: flex;
+  gap: var(--gap);
+  transition: transform 350ms ease;
+  transform: translateX(
+    calc(-1 * var(--slide, 0) * (var(--card-w) + var(--gap)))
+  );
+}
+
+/* ══════════════════════════════
+    КАРТОЧКА
+══════════════════════════════ */
+.card {
+  flex: 0 0 var(--card-w);
+  height: auto;
+  border-radius: 1.2rem;
+  border: 1px solid #dadada;
+  background: var(--color-bg-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color 250ms ease;
+}
+
+.card:hover {
+  border-color: var(--color-green);
+}
+
+/* ── Верхняя часть: круг + фото ── */
+.imageSection {
+  position: relative;
+  height: 11.25rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 7.6875rem;
+  height: 7.6875rem;
+  border-radius: 50%;
+  background: linear-gradient(267deg, #237249 3.05%, #35c66b 75.72%);
+  filter: drop-shadow(0 0.207rem 2.129rem rgba(0, 0, 0, 0.39));
+}
+
+.productImg {
+  position: relative;
+  z-index: 1;
+  width: 7.4375rem;
+  height: 9.9375rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0.165rem 1.9rem rgba(0, 0, 0, 0.48));
+}
+
+/* ── Нижняя часть: текст + кнопка ── */
+.cardBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.875rem 1.25rem;
+  text-align: center;
+}
+
+.name {
+  font-size: 1.322rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 163.471%;
+  letter-spacing: -0.0264rem;
+}
+
+.desc {
+  font-size: 0.832rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 163.471%;
+  letter-spacing: -0.0166rem;
+  margin-top: 0.25rem;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.625rem;
+}
+
+.price {
+  font-size: 1.322rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 163.471%;
+  letter-spacing: -0.0264rem;
+}
+
+.volume {
+  font-size: 0.832rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  letter-spacing: -0.0166rem;
+}
+
+.buyBtn {
+  margin-top: 0.75rem;
+  width: 7.6875rem;
+  height: 2.25rem;
+  border-radius: 2.467rem;
+  background: linear-gradient(265deg, #237249 6.79%, #35c66b 97.2%);
+  font-family: var(--font-main);
+  font-size: 0.715rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.0143rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    filter 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.buyBtn:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0.375rem 1.5rem rgba(53, 198, 107, 0.5);
+}
+
+/* ══════════════════════════════
+    НАВИГАЦИОННЫЕ КНОПКИ
+══════════════════════════════ */
+.navBtn {
+  position: relative;
+  flex-shrink: 0;
+  width: 3.4375rem;
+  height: 3.4375rem;
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
+    linear-gradient(265deg, #237249, #35c66b) border-box;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 150ms ease;
+}
+
+.navBtn::before {
+  content: "";
+  position: absolute;
+  inset: -200px;
+  background: radial-gradient(
+    ellipse 21% 20% at 50% 50%,
+    rgba(53, 198, 107, 0.15) -92%,
+    transparent 140%
+  );
+  pointer-events: none;
+}
+
+.navBtn:hover {
+  filter: brightness(1.3);
+}
+
+.navHidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.navArrow {
+  display: block;
+  width: 1.25rem;
+  height: 1px;
+  background: linear-gradient(to right, #237249, #35c66b);
+  position: relative;
+}
+
+.navArrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 1.5px solid var(--color-green-light);
+  border-top: 1.5px solid var(--color-green-light);
+}
+
+/* Левая стрелка — зеркальное отражение */
+.navArrowLeft {
+  transform: scaleX(-1);
+}
+
+/* ══════════════════════════════
+    ПЛАНШЕТ — 768px  →  2 карточки
+══════════════════════════════ */
+@media (min-width: 768px) {
+  .header {
+    display: flex;
+    gap: 4.5rem;
+  }
+
+  .subtitle {
+    max-width: 445px;
+  }
+
+  .carouselOuter {
+    --card-w: 14.6875rem; /* 235px */
+    --n-cards: 2;
+  }
+
+  .imageSection {
+    height: 12.5rem;
+  }
+
+  .circle {
+    width: 8.5rem;
+    height: 8.5rem;
+  }
+
+  .productImg {
+    width: 8rem;
+    height: 11rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .price {
+    font-size: 1.5rem;
+  }
+}
+
+/* ══════════════════════════════
+    ДЕСКТОП — 1024px  →  3 карточки
+══════════════════════════════ */
+@media (min-width: 1024px) {
+  .carouselOuter {
+    --card-w: 17.5rem; /* 280px */
+    --n-cards: 3;
+  }
+}
