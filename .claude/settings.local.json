@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.builder.io)",
+      "WebFetch(domain:cdn.builder.io)"
+    ]
+  }
+}

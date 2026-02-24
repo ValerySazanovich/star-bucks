@@ -1,0 +1,287 @@
+/* ═══════════════════════════════════════ */
+/*  Footer                                 */
+/* ═══════════════════════════════════════ */
+
+.footer {
+  background-color: #0b0c0d;
+  overflow-x: clip;
+}
+
+/* ── Inner wrapper — CSS Grid layout ── */
+.inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 21px 25px 24px;
+
+  /* Mobile: 2-column grid
+     [logo]        [scroll-btn]
+     [nav ──────────────────]
+     [bottom ───────────────]
+  */
+  display: grid;
+  grid-template-areas:
+    "logo  btn"
+    "nav   nav"
+    "foot  foot";
+  grid-template-columns: 1fr auto;
+  row-gap: 24px;
+  align-items: center;
+}
+
+/* ── Logo ── */
+.logoLink {
+  grid-area: logo;
+  align-self: center;
+  display: inline-flex;
+}
+
+.logoImg {
+  height: 38px;
+  width: auto;
+}
+
+/* ── Scroll-to-top button ── */
+.scrollTop {
+  grid-area: btn;
+  align-self: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: none;
+  border: 1.5px solid var(--color-green-light);
+  border-radius: var(--radius-md);
+  color: var(--color-green-light);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.scrollTop:hover {
+  background: rgba(76, 175, 80, 0.12);
+}
+
+/* ── Navigation ── */
+.nav {
+  grid-area: nav;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px 8px;
+}
+
+.navCol {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-wrap: break-word;
+}
+
+.navTitle {
+  color: #bbb3b3;
+  font-family: var(--font-main);
+  font-size: 15.03px;
+  font-weight: 400;
+  letter-spacing: -0.15px;
+  line-height: 1.3;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.navTitle:hover {
+  color: #ffffff;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navLink {
+  color: rgba(187, 179, 179, 0.43);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.15px;
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.navLink:hover {
+  color: rgba(187, 179, 179, 0.8);
+}
+
+/* ── Bottom row: phone + instagram ── */
+.bottomRow {
+  grid-area: foot;
+  min-width: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.phone {
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.15px;
+  /* gradient text */
+  background: linear-gradient(90deg, #237249 0%, #35c66b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.instagramLink {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.instagramLink:hover .instagramIcon {
+  filter: brightness(1.2) drop-shadow(0 0 4px #4caf5080);
+}
+
+.instagramIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: filter var(--transition-fast);
+}
+
+/* ═══════════════════════════════════════ */
+/*  Tablet  768px+                         */
+/* ═══════════════════════════════════════ */
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 30px 35px 32px;
+    row-gap: 32px;
+  }
+
+  .logoImg {
+    height: 44px;
+  }
+
+  .scrollTop {
+    width: 48px;
+    height: 48px;
+  }
+
+  .scrollTop svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* All 5 columns in one row */
+  .nav {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0 16px;
+  }
+
+  .navTitle {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .navLink {
+    font-size: 15px;
+  }
+
+  .phone {
+    font-size: 20px;
+  }
+
+  .instagramLink {
+    width: 44px;
+    height: 44px;
+  }
+
+  .instagramIcon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ═══════════════════════════════════════ */
+/*  Desktop  1024px+                       */
+/* ═══════════════════════════════════════ */
+
+@media (min-width: 1024px) {
+  .inner {
+    padding: 38px 62px 48px;
+
+    /* Desktop: logo | nav | btn (одна строка) */
+    grid-template-areas:
+      "logo  nav   btn"
+      "foot  foot  foot";
+    grid-template-columns: auto 1fr auto;
+    column-gap: clamp(24px, 4vw, 80px);
+    row-gap: 89px;
+    align-items: start;
+  }
+
+  .logoLink {
+    align-self: start;
+  }
+
+  .logoImg {
+    height: 41px;
+  }
+
+  .scrollTop {
+    width: 84px;
+    height: 84px;
+    border-radius: var(--radius-lg);
+    border-width: 2px;
+    align-self: start;
+  }
+
+  .scrollTop svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* 5 колонок, прижаты к левому краю nav-ячейки */
+  .nav {
+    grid-template-columns: repeat(5, auto);
+    justify-content: start;
+    gap: 0 clamp(16px, 3.5vw, 80px);
+    align-self: start;
+  }
+
+  .navTitle {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .navLink {
+    font-size: min(1.32vw, 20px);
+    letter-spacing: -0.2px;
+  }
+
+  .phone {
+    font-size: 26px;
+    letter-spacing: -0.2px;
+  }
+
+  .instagramLink {
+    width: 46px;
+    height: 46px;
+  }
+
+  .instagramIcon {
+    width: 36px;
+    height: 36px;
+  }
+}

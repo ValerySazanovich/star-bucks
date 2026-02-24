@@ -1,0 +1,211 @@
+/* ── Section ── */
+.section {
+  background-color: var(--color-bg);
+  padding-block: var(--space-8);
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+
+.description {
+  font-size: clamp(14px, 1.32vw, 20px);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 163.471%;
+  letter-spacing: -0.0166rem;
+  width: clamp(290px, 30.42vw, 460px);
+}
+
+.headerRight {
+  /* stacks below on mobile */
+}
+
+.title {
+  font-size: clamp(55px, 5.3vw, 80px);
+  font-weight: 800;
+  line-height: 109.471%;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+.accent {
+  color: var(--color-green-light);
+}
+
+/* ── Grid wrapper ── */
+.gridWrap {
+  position: relative;
+  z-index: 1;
+}
+
+.gridWrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Grid — mobile: one column, full width ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.grid::before {
+  content: "";
+  position: absolute;
+  inset: -200px;
+  background: radial-gradient(
+    ellipse 21% 20% at 65% 27%,
+    rgba(53, 198, 107, 0.15) -92%,
+    transparent 140%
+  ),
+    radial-gradient(
+    ellipse 13% 20% at 38% 69%,
+    rgba(200, 200, 200, 0.13) -2%,
+    transparent 130%
+  );
+  pointer-events: none;
+}
+
+/* ── Card ── */
+.card {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  min-height: 220px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(0, 0, 0, 0.10) 0%,
+    rgba(0, 0, 0, 0.60) 100%
+  );
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  height: 100%;
+  min-height: 220px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+.btn {
+  padding: 10px 32px;
+  background-color: var(--color-green-light);
+  color: var(--color-text);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background-color var(--transition-base);
+}
+
+.btn:hover {
+  background-color: var(--color-green);
+}
+
+/* ── Tablet (768px) — 2 columns, no wide span ── */
+@media (min-width: 768px) {
+  .section {
+    position: relative;
+    padding-block: var(--space-12);
+    
+  }
+
+  .gridWrap::after {
+    content: "";
+    position: absolute;
+    left: -11%;
+    top: -40%;
+    transform: rotate(90deg);
+    width: 800px;
+    height: 100%;
+    background-image: url("../../../assets/images/hero-vector.png");
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: contain;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 72px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    min-height: 260px;
+  }
+
+  .cardContent {
+    min-height: 260px;
+    padding: var(--space-4);
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+}
+
+/* ── Desktop (1024px) — 3 columns, wide card spans 2 ── */
+@media (min-width: 1024px) {
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .wide {
+    grid-column: span 2;
+  }
+
+  .card {
+    min-height: 280px;
+  }
+
+  .cardContent {
+    min-height: 280px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+  }
+}

@@ -6,32 +6,32 @@ import rect12 from '../assets/images/Rectangle 12.png';
 export const EVENTS = [
   {
     id: 1,
-    title: 'Coffee Tasting Morning',
+    title: 'TWO COFFEE FOR 1 PRICE',
     image: rect9,
-    size: 'wide',
-  },
-  {
-    id: 2,
-    title: 'Barista Masterclass',
-    image: rect10,
     size: 'normal',
   },
   {
+    id: 2,
+    title: 'KITCHEN TOUR',
+    image: rect10,
+    size: 'wide',
+  },
+  {
     id: 3,
-    title: 'Latte Art Workshop',
+    title: 'FREE COFFEE FOR 3 COFFEE',
     image: rect11,
     size: 'normal',
   },
   {
     id: 4,
-    title: 'New Season Menu Launch',
+    title: 'OUR INSTAGRAM',
     image: rect12,
     size: 'normal',
   },
   {
     id: 5,
-    title: 'Weekend Brew Festival',
+    title: 'WHERE ARE YOU CHOOSE US?',
     image: rect9,
-    size: 'wide',
+    size: 'normal',
   },
 ];

@@ -1,5 +1,5 @@
 import styles from './About.module.css';
-import cafeImg     from '../../../assets/images/1.webp';
+import cafeImg     from '../../../assets/images/1.jpg';
 import cookingImg  from '../../../assets/images/2.webp';
 import weHaveImg   from '../../../assets/images/wehave.png';
 import aboutVector from '../../../assets/images/about-vector.png';
@@ -40,7 +40,7 @@ export default function About() {
               Cooking Process
             </button>
           </div>
-        </div>
+        </div>        
 
       </div>
     </section>

@@ -26,7 +26,7 @@ const FEATURES = [
 
 export default function Features() {
   return (
-    <section className={styles.section}>
+    <section id="features" className={styles.section}>
       <div className={`container ${styles.outer}`}>
         <div className={styles.card}>
           {FEATURES.map(({ id, icon, title, desc }) => (

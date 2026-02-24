@@ -11,15 +11,30 @@
     ШАПКА
 ══════════════════════════════ */
 .header {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .heading {
+  position: relative;
+  width: clamp(252px, 24.47vw, 370px);
   font-size: clamp(55px, 5.3vw, 80px);
   font-weight: 800;
   line-height: 109.471%;
   letter-spacing: -0.03em;
   color: var(--color-text);
+}
+
+.heading::before {
+  content: "";
+  position: absolute;
+  inset: -200px;
+  background: radial-gradient(
+    ellipse 21% 25% at 63% 54%,
+    rgba(53, 198, 107, 0.15) -92%,
+    transparent 140%
+  );
+  pointer-events: none;
+  z-index: 2;
 }
 
 .accent {
